@@ -19,7 +19,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 10); // Fixed: was window.screenY
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,7 +56,7 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
+        "fixed top-0 w-full z-40 transition-all duration-300",
         isScrolled
           ? "py-3 bg-background/80 backdrop-blur-md shadow-lg border-b border-border/50"
           : "py-5 bg-transparent"
@@ -64,7 +64,7 @@ export const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         <a
-          className="text-xl font-bold text-primary flex items-center relative z-50"
+          className="text-xl font-bold text-primary flex items-center relative z-10"
           href="#hero"
         >
           <span className="relative z-10">
@@ -79,7 +79,7 @@ export const Navbar = () => {
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300 relative z-50"
+              className="text-foreground/80 hover:text-primary transition-colors duration-300 relative z-10"
             >
               {item.name}
             </a>
@@ -89,7 +89,7 @@ export const Navbar = () => {
         {/* mobile nav toggle */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground relative z-50"
+          className="md:hidden p-2 text-foreground relative z-45"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -115,7 +115,7 @@ export const Navbar = () => {
             width: '100vw',
           }}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-8 text-xl items-center">
             {navItems.map((item, key) => (
               <a
                 key={key}
